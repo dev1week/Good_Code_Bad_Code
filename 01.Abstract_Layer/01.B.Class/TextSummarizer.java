@@ -2,15 +2,15 @@ class TextSummarizer{
     private final ParagraphFinder paragraphFinder;
     private final TextImportanceScorer textImportanceScorer;
 
-    public TextSummarizer(ParagraphFinder paragraphFinder, TextImportanceScorer textImportanceScorer) {
-        this.paragraphFinder = paragraphFinder;
-        this.textImportanceScorer = textImportanceScorer;
-    }
-
     String summarizeText(String text) {
         return paragraphFinder.find(text)
                 .filter(paragraph ->importanceScorer.isImportant(paragraph))
                 .join("\n");
+    }
+
+    public TextSummarizer(ParagraphFinder paragraphFinder, TextImportanceScorer textImportanceScorer) {
+        this.paragraphFinder = paragraphFinder;
+        this.textImportanceScorer = textImportanceScorer;
     }
 }
 
