@@ -8,9 +8,13 @@ class TextSummarizer{
                 .join("\n");
     }
 
-    public TextSummarizer(ParagraphFinder paragraphFinder, TextImportanceScorer textImportanceScorer) {
+    private TextSummarizer(ParagraphFinder paragraphFinder, TextImportanceScorer textImportanceScorer) {
         this.paragraphFinder = paragraphFinder;
         this.textImportanceScorer = textImportanceScorer;
+    }
+
+    public static TextSummarizer create(String text) {
+        return new TextSummarizer(new ParagraphFinder(), new TextImportanceScorer());
     }
 }
 
